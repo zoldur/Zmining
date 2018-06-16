@@ -13,7 +13,7 @@ COIN_NAME='Zmg'
 COIN_PORT=29293
 RPC_PORT=29295
 
-NODEIP=$(curl -s4 icanhazip.com)
+NODEIP=$(curl -s4 api.ipify.org)
 
 
 RED='\033[0;31m'
@@ -140,7 +140,7 @@ function get_ip() {
   declare -a NODE_zmg
   for zmg in $(netstat -i | awk '!/Kernel|Iface|lo/ {print $1," "}')
   do
-    NODE_zmg+=($(curl --interface $zmg --connect-timeout 2 -s4 icanhazip.com))
+    NODE_zmg+=($(curl --interface $zmg --connect-timeout 2 -s4 api.ipify.org))
   done
 
   if [ ${#NODE_zmg[@]} -gt 1 ]
